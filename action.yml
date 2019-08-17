@@ -6,13 +6,15 @@ inputs:
     description: 'Architecture to be emulated.  Examples: arm, arm64'
     required: true
     default: 'arm'
+
 runs:
   using: 'docker'
-  image: 'docker://meedamian/simple-qemu-test:latest'
+  image: 'docker://meedamian/simple-qemu-test:minimal'
   args:
 #    - ${{ inputs.targetArchitecture }}
     - '--reset'
     - '-p yes'
+
 branding:
   color: 'green'
   icon: 'target'
