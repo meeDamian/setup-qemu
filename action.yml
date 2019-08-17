@@ -1,12 +1,18 @@
-name: 'Container Action Template'
-description: 'Get started with Container actions'
-author: 'GitHub'
+name: 'Setup qemu emulation'
+description: 'Setup emulation of another CPU'
+author: 'Damian Mee <spam@meedamian.com>'
 inputs: 
-  myInput:
-    description: 'Input to use'
-    default: 'world'
+  target-arch:
+    description: 'Architecture to be emulated.  Examples: arm, arm64'
+    required: true
+    default: 'arm'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'docker://meedamian/simple-qemu-test:latest'
   args:
-    - ${{ inputs.myInput }}
+#    - ${{ inputs.targetArchitecture }}
+    - '--reset'
+    - '-p yes'
+branding:
+  color: 'green'
+  icon: 'target'
